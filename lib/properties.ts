@@ -1,0 +1,190 @@
+export type PropertyStatus = 'For Sale' | 'For Rent'
+export type PropertyType = 'House' | 'Villa' | 'Apartment' | 'Penthouse' | 'Estate'
+
+export interface Property {
+  id: string
+  title: string
+  address: string
+  city: string
+  price: number
+  priceSuffix?: string
+  status: PropertyStatus
+  type: PropertyType
+  beds: number
+  baths: number
+  sqft: number
+  image: string
+  featured?: boolean
+}
+
+export const properties: Property[] = [
+  {
+    id: 'the-hillcrest-residence',
+    title: 'The Hillcrest Residence',
+    address: '128 Hillcrest Drive',
+    city: 'Beverly Hills, CA',
+    price: 750000,
+    status: 'For Sale',
+    type: 'House',
+    beds: 4,
+    baths: 3,
+    sqft: 3200,
+    image: '/images/property-1.png',
+    featured: true,
+  },
+  {
+    id: 'azure-glass-villa',
+    title: 'Azure Glass Villa',
+    address: '54 Palm Grove Terrace',
+    city: 'Palm Springs, CA',
+    price: 1450000,
+    status: 'For Sale',
+    type: 'Villa',
+    beds: 5,
+    baths: 4,
+    sqft: 4100,
+    image: '/images/property-2.png',
+    featured: true,
+  },
+  {
+    id: 'the-wellington-estate',
+    title: 'The Wellington Estate',
+    address: '9 Wellington Court',
+    city: 'Greenwich, CT',
+    price: 2350000,
+    status: 'For Sale',
+    type: 'Estate',
+    beds: 6,
+    baths: 5,
+    sqft: 5600,
+    image: '/images/property-3.png',
+    featured: true,
+  },
+  {
+    id: 'skyline-penthouse',
+    title: 'Skyline Penthouse',
+    address: '400 Marina Boulevard, PH2',
+    city: 'San Francisco, CA',
+    price: 8500,
+    priceSuffix: '/mo',
+    status: 'For Rent',
+    type: 'Penthouse',
+    beds: 3,
+    baths: 3,
+    sqft: 2400,
+    image: '/images/property-4.png',
+    featured: true,
+  },
+  {
+    id: 'maple-farmhouse',
+    title: 'Maple Ridge Farmhouse',
+    address: '77 Maple Ridge Lane',
+    city: 'Hudson Valley, NY',
+    price: 985000,
+    status: 'For Sale',
+    type: 'House',
+    beds: 4,
+    baths: 3,
+    sqft: 3400,
+    image: '/images/property-5.png',
+    featured: true,
+  },
+  {
+    id: 'villa-serena',
+    title: 'Villa Serena',
+    address: '21 Cypress Point Road',
+    city: 'Santa Barbara, CA',
+    price: 1875000,
+    status: 'For Sale',
+    type: 'Villa',
+    beds: 5,
+    baths: 4,
+    sqft: 4300,
+    image: '/images/property-6.png',
+    featured: true,
+  },
+  {
+    id: 'seabreeze-house',
+    title: 'Seabreeze Modern House',
+    address: '3 Shoreline Way',
+    city: 'Malibu, CA',
+    price: 12500,
+    priceSuffix: '/mo',
+    status: 'For Rent',
+    type: 'House',
+    beds: 4,
+    baths: 4,
+    sqft: 3800,
+    image: '/images/property-7.png',
+  },
+  {
+    id: 'alpine-lodge',
+    title: 'Alpine Timber Lodge',
+    address: '15 Summit Trail',
+    city: 'Aspen, CO',
+    price: 3200000,
+    status: 'For Sale',
+    type: 'Estate',
+    beds: 6,
+    baths: 6,
+    sqft: 6200,
+    image: '/images/property-8.png',
+  },
+  {
+    id: 'the-hillcrest-two',
+    title: 'Oakmont Family Home',
+    address: '212 Oakmont Avenue',
+    city: 'Pasadena, CA',
+    price: 450000,
+    status: 'For Sale',
+    type: 'House',
+    beds: 3,
+    baths: 2,
+    sqft: 1900,
+    image: '/images/property-1.png',
+  },
+  {
+    id: 'downtown-loft',
+    title: 'Metropolitan Loft',
+    address: '88 Union Square, Unit 12',
+    city: 'New York, NY',
+    price: 6200,
+    priceSuffix: '/mo',
+    status: 'For Rent',
+    type: 'Apartment',
+    beds: 2,
+    baths: 2,
+    sqft: 1450,
+    image: '/images/property-4.png',
+  },
+  {
+    id: 'coastal-villa',
+    title: 'Coastal Retreat Villa',
+    address: '6 Ocean Crest Drive',
+    city: 'La Jolla, CA',
+    price: 2650000,
+    status: 'For Sale',
+    type: 'Villa',
+    beds: 5,
+    baths: 5,
+    sqft: 4700,
+    image: '/images/property-7.png',
+  },
+  {
+    id: 'mediterranean-manor',
+    title: 'Mediterranean Manor',
+    address: '44 Olive Hill Road',
+    city: 'Montecito, CA',
+    price: 3950000,
+    status: 'For Sale',
+    type: 'Estate',
+    beds: 6,
+    baths: 7,
+    sqft: 6800,
+    image: '/images/property-6.png',
+  },
+]
+
+export function formatPrice(price: number, suffix?: string) {
+  return `$${price.toLocaleString('en-US')}${suffix ?? ''}`
+}
