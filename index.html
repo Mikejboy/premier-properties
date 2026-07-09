@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Properties Group - Luxury Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --navy: #001f3f;
+            --gold: #d4af37;
+            --light-navy: #003d7a;
+            --cream: #f8f7f2;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        .navbar-backdrop {
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 31, 63, 0.95);
+        }
+
+        .gold-text {
+            color: var(--gold);
+        }
+
+        .gold-accent {
+            border-color: var(--gold);
+        }
+
+        .navy-bg {
+            background-color: var(--navy);
+        }
+
+        .light-navy-bg {
+            background-color: var(--light-navy);
+        }
+
+        .cream-bg {
+            background-color: var(--cream);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.7) 0%, rgba(212, 175, 55, 0.3) 100%);
+        }
+
+        .property-card {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .property-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 31, 63, 0.2);
+            border-color: var(--gold);
+        }
+
+        .property-image {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .property-card:hover .property-image {
+            transform: scale(1.05);
+        }
+
+        .gold-btn {
+            background-color: var(--gold);
+            color: var(--navy);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .gold-btn:hover {
+            background-color: #e8c547;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .input-navy {
+            background-color: rgba(0, 31, 63, 0.05);
+            border-color: var(--gold);
+        }
+
+        .input-navy:focus {
+            background-color: rgba(0, 31, 63, 0.08);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .section-title::after {
+                left: 0;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="navbar-backdrop fixed w-full top-0 z-50 border-b-2 gold-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 navy-bg rounded-lg flex items-center justify-center">
+                        <span class="gold-text text-xl font-bold">P</span>
+                    </div>
+                    <span class="text-white font-bold text-lg hidden sm:inline">Premier Properties</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:gold-text transition duration-300">Home</a>
+                    <a href="#properties" class="text-white hover:gold-text transition duration-300">Properties</a>
+                    <a href="#about" class="text-white hover:gold-text transition duration-300">About</a>
+                    <a href="#contact" class="text-white hover:gold-text transition duration-300">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+                <a href="#home" class="block text-white hover:gold-text py-2">Home</a>
+                <a href="#properties" class="block text-white hover:gold-text py-2">Properties</a>
+                <a href="#about" class="block text-white hover:gold-text py-2">About</a>
+                <a href="#contact" class="block text-white hover:gold-text py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&h=900&fit=crop" alt="Luxury Home" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Find Your <span class="gold-text">Dream Home</span>
+            </h1>
+            <p class="text-xl text-gray-100 mb-10">Discover extraordinary properties in premier locations</p>
+
+            <!-- Search Bar -->
+            <div class="bg-white rounded-lg shadow-2xl p-2 flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
+                <input type="text" placeholder="Search by location..." class="flex-1 px-4 py-3 focus:outline-none rounded">
+                <select class="px-4 py-3 focus:outline-none rounded border-l border-gray-200">
+                    <option>All Types</option>
+                    <option>Houses</option>
+                    <option>Apartments</option>
+                    <option>Condos</option>
+                </select>
+                <button class="gold-btn px-8 py-3 rounded font-semibold">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section id="properties" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center navy-bg bg-clip-text section-title mb-16">
+                <span style="color: var(--navy);">Featured Properties</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property Card 1 -->
+                <div class="property-card rounded-lg overflow-hidden bg-white shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=400&fit=crop" alt="Modern Mansion" class="property-image w-full">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-2xl font-bold navy-bg bg-clip-text" style="color: var(--navy);">$2,850,000</h3>
+                            <span class="gold-text text-sm font-semibold">Featured</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 font-medium">456 Oakmont Drive, Beverly Hills</p>
+                        <div class="flex justify-between text-gray-700 mb-4 pb-4 border-b border-gray-200">
+                            <span class="font-semibold">4 <span class="text-gray-500">Beds</span></span>
+                            <span class="font-semibold">3 <span class="text-gray-500">Baths</span></span>
+                            <span class="font-semibold">5,200 <span class="text-gray-500">sqft</span></span>
+                        </div>
+                        <button class="gold-btn w-full py-2 rounded">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="property-card rounded-lg overflow-hidden bg-white shadow-lg">
+                    <img src="./beachfront-villa.png" alt="Beachfront Villa" class="property-image w-full">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-2xl font-bold navy-bg bg-clip-text" style="color: var(--navy);">$3,750,000</h3>
+                            <span class="gold-text text-sm font-semibold">Luxury</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 font-medium">789 Coastal Avenue, Malibu</p>
+                        <div class="flex justify-between text-gray-700 mb-4 pb-4 border-b border-gray-200">
+                            <span class="font-semibold">5 <span class="text-gray-500">Beds</span></span>
+                            <span class="font-semibold">4 <span class="text-gray-500">Baths</span></span>
+                            <span class="font-semibold">6,800 <span class="text-gray-500">sqft</span></span>
+                        </div>
+                        <button class="gold-btn w-full py-2 rounded">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Property Card 3 -->
+                <div class="property-card rounded-lg overflow-hidden bg-white shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=400&fit=crop" alt="Downtown Penthouse" class="property-image w-full">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-2xl font-bold navy-bg bg-clip-text" style="color: var(--navy);">$1,950,000</h3>
+                            <span class="gold-text text-sm font-semibold">Modern</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 font-medium">321 Downtown Plaza, Miami</p>
+                        <div class="flex justify-between text-gray-700 mb-4 pb-4 border-b border-gray-200">
+                            <span class="font-semibold">3 <span class="text-gray-500">Beds</span></span>
+                            <span class="font-semibold">2 <span class="text-gray-500">Baths</span></span>
+                            <span class="font-semibold">3,400 <span class="text-gray-500">sqft</span></span>
+                        </div>
+                        <button class="gold-btn w-full py-2 rounded">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 px-4 cream-bg">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- About Image -->
+                <div class="order-2 lg:order-1">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop" alt="Premier Team" class="rounded-lg shadow-lg">
+                </div>
+
+                <!-- About Content -->
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-4xl font-bold mb-6 section-title navy-bg bg-clip-text" style="color: var(--navy);">
+                        About Premier Properties
+                    </h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        With over 25 years of experience in luxury real estate, Premier Properties Group has established itself as the leading luxury home specialist in Southern California. Our team of expert agents is dedicated to providing exceptional service and finding the perfect property for every client.
+                    </p>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        We pride ourselves on our unmatched market knowledge, innovative marketing strategies, and commitment to personalized service. Every property is treated as unique, and every client receives the attention they deserve.
+                    </p>
+
+                    <!-- Stats -->
+                    <div class="stats">
+                        <div class="text-center">
+                            <h3 class="text-4xl font-bold gold-text">500+</h3>
+                            <p class="text-gray-600">Properties Sold</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-4xl font-bold gold-text">25+</h3>
+                            <p class="text-gray-600">Years Experience</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-4xl font-bold gold-text">98%</h3>
+                            <p class="text-gray-600">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 navy-bg">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-white mb-4 section-title">
+                Get in Touch
+            </h2>
+            <p class="text-center text-gray-300 mb-16 max-w-2xl mx-auto">
+                Have questions about a property? Want to schedule a viewing? Contact our team today.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Contact Info Cards -->
+                <div class="text-center">
+                    <div class="inline-block w-12 h-12 gold-text mb-4">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-white font-bold mb-2">Email</h3>
+                    <p class="text-gray-300">info@premierproperties.com</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="inline-block w-12 h-12 gold-text mb-4">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773c.058.3.102.605.102.924v1.575a9 9 0 006.552 8.586l1.575-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.716 18 2 12.284 2 5V3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-white font-bold mb-2">Phone</h3>
+                    <p class="text-gray-300">(800) 123-4567</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="inline-block w-12 h-12 gold-text mb-4">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-white font-bold mb-2">Office</h3>
+                    <p class="text-gray-300">Beverly Hills, CA 90210</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-xl p-8">
+                <form id="contact-form">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" required class="input-navy w-full px-4 py-3 rounded border-2" placeholder="Your name">
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" required class="input-navy w-full px-4 py-3 rounded border-2" placeholder="your@email.com">
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" required class="input-navy w-full px-4 py-3 rounded border-2" placeholder="Tell us about your real estate needs..."></textarea>
+                    </div>
+
+                    <button type="submit" class="gold-btn w-full py-3 rounded font-bold text-lg">Send Message</button>
+                </form>
+                <div id="form-message" class="mt-4 hidden p-3 rounded text-center font-semibold"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="light-navy-bg text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-white rounded flex items-center justify-center">
+                            <span class="text-navy font-bold">P</span>
+                        </div>
+                        <span class="font-bold">Premier Properties</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">Your trusted partner in luxury real estate.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 gold-text">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#home" class="hover:gold-text transition">Home</a></li>
+                        <li><a href="#properties" class="hover:gold-text transition">Properties</a></li>
+                        <li><a href="#about" class="hover:gold-text transition">About Us</a></li>
+                        <li><a href="#contact" class="hover:gold-text transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 gold-text">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:gold-text transition">Our Team</a></li>
+                        <li><a href="#" class="hover:gold-text transition">Careers</a></li>
+                        <li><a href="#" class="hover:gold-text transition">Blog</a></li>
+                        <li><a href="#" class="hover:gold-text transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 gold-text">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition">
+                            <span class="text-sm">f</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition">
+                            <span class="text-sm">T</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition">
+                            <span class="text-sm">in</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition">
+                            <span class="text-sm">📷</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Premier Properties Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Here you would typically send this to a backend service
+            // For now, we'll just show a success message
+            console.log('Form submitted:', { name, email, message });
+
+            formMessage.textContent = 'Thank you! We\'ll get back to you shortly.';
+            formMessage.classList.remove('hidden');
+            formMessage.style.backgroundColor = '#d4af37';
+            formMessage.style.color = '#001f3f';
+
+            // Reset form
+            contactForm.reset();
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Add smooth scroll offset for fixed navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Search functionality
+        document.querySelector('button[class*="gold-btn"]:nth-of-type(1)').addEventListener('click', () => {
+            const searchInput = document.querySelector('input[placeholder*="location"]').value;
+            if (searchInput) {
+                const propertiesSection = document.getElementById('properties');
+                window.scrollTo({
+                    top: propertiesSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Property card interactions
+        document.querySelectorAll('.property-card button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Contact us to schedule a viewing for this property!');
+            });
+        });
+    </script>
+
+</body>
+</html>
